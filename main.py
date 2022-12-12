@@ -45,17 +45,24 @@ pc_winn = 0
 draw = 0
 
 # Tournament rounds count
-rounds = int(input("How many rounds are you willing to play?\n"))
+rounds = input("How many rounds are you willing to play?\n")
+while not rounds.isdigit():
+    print("Invalid choice. Please try again.")
+    rounds = input("How many rounds are you willing to play?\n")
+# convert the input to an integer
+rounds = int(rounds)
 sleep(1)
 # Play the game for the specified number of rounds
 for user in range(rounds):
 
     # User's input storing
-    user = int(input("What do you choose? Enter 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
+    user = input("What do you choose? Enter 0 for Rock, 1 for Paper or 2 for Scissors.\n")
     # Use a while loop to repeatedly prompt the user until they enter a valid choice
-    while user not in [0, 1, 2]:
+    while not user.isdigit() or int(user) not in [0, 1, 2]:
         print("Invalid choice. Please try again.")
-        user = int(input("Enter 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
+        user = input("Enter 0 for Rock, 1 for Paper or 2 for Scissors.\n")
+    # convert the input to an integer
+    user = int(user)
     if user == 0:
         print(rock)
     elif user == 1:
